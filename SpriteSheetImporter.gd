@@ -8,7 +8,7 @@ export (bool) var DisableFilter = false
 export var tileSize = 16
 export var tileCountX = 0
 export var tileCountY = 0
-export var offset = 1
+export var margin = 1
 export (Texture) var spritesheet
 
 
@@ -33,10 +33,10 @@ func onGenerate(isTriggered):
 				tile.set_texture(spritesheet)
 				tile.set_region(true)
 				tile.set_region_rect(tileRegion)
-				tile.position = Vector2(x*tileSize+tileSize/2, y*tileSize+tileSize/2)
+				tile.position = Vector2(xPoint + tileSize / 2, yPoint + tileSize / 2)
 				
 				if(DisableFilter):
 					tile.get_texture().set_flags(0)
 				
-				xPoint += tileSize + offset
-			yPoint += tileSize + offset
+				xPoint += tileSize + margin
+			yPoint += tileSize + margin

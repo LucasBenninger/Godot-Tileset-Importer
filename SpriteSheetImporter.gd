@@ -3,6 +3,8 @@ extends Node
 
 export (bool) var Generate = false setget onGenerate
 
+export (bool) var DisableFilter = false
+
 export var tileSize = 16
 export var tileCountX = 0
 export var tileCountY = 0
@@ -32,6 +34,9 @@ func onGenerate(isTriggered):
 				tile.set_region(true)
 				tile.set_region_rect(tileRegion)
 				tile.position = Vector2(x*tileSize+tileSize/2, y*tileSize+tileSize/2)
+				
+				if(DisableFilter):
+					tile.get_texture().set_flags(0)
 				
 				xPoint += tileSize + offset
 			yPoint += tileSize + offset
